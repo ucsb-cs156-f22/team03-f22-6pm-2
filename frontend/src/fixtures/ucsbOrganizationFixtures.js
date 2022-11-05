@@ -5,7 +5,7 @@ const ucsbOrganizationFixtures = {
         "orgTranslation": "orgTrans",
         "inactive": false,
     },
-    threeOrganizatios: [
+    threeOrganizations: [
         {
             "orgCode": "testCode2",
             "orgTranslationShort": "orgTransShort_1",
