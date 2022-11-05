@@ -98,7 +98,7 @@ describe("AppNavbar tests", () => {
         )
 
         await waitFor(() => expect(getByTestId("appnavbar-ucsborganizations-dropdown")).toBeInTheDocument());
-    })
+    });
 
     test("renders the AppNavbarLocalhost when on http://localhost:3000", async () => {
 
