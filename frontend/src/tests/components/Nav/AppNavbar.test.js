@@ -82,7 +82,7 @@ describe("AppNavbar tests", () => {
 
         await waitFor(() => expect(getByTestId("appnavbar-todos-dropdown")).toBeInTheDocument());
     });
-
+    
     test("renders the MenuItemReview menu correctly", async () => {
 
         const currentUser = currentUserFixtures.userOnly;
@@ -99,6 +99,24 @@ describe("AppNavbar tests", () => {
         );
 
         await waitFor(() => expect(getByTestId("appnavbar-menuitemreviews-dropdown")).toBeInTheDocument());
+    });
+
+    test("renders the UCSBOrganization menu correctly", async () => {
+    
+        const currentUser = currentUserFixtures.userOnly;
+        const systemInfo = systemInfoFixtures.showingBoth;
+
+        const doLogin = jest.fn();
+
+        const {getByTestId } = render(
+            <QueryClientProvider client={queryClient}>
+                <MemoryRouter>
+                    <AppNavbar currentUser={currentUser} systemInfo={systemInfo} doLogin={doLogin} />
+                </MemoryRouter>
+            </QueryClientProvider>
+        );
+
+        await waitFor(() => expect(getByTestId("appnavbar-ucsborganizations-dropdown")).toBeInTheDocument());
     });
 
     test("renders the AppNavbarLocalhost when on http://localhost:3000", async () => {
