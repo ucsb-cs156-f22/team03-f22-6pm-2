@@ -11,6 +11,7 @@ import DiningCommonsIndexPage from "main/pages/DiningCommons/DiningCommonsIndexP
 import DiningCommonsCreatePage from "main/pages/DiningCommons/DiningCommonsCreatePage";
 import DiningCommonsEditPage from "main/pages/DiningCommons/DiningCommonsEditPage";
 
+import MenuItemsIndexPage from "main/pages/MenuItems/MenuItemsIndexPage";
 
 import UCSBDatesIndexPage from "main/pages/UCSBDates/UCSBDatesIndexPage";
 import UCSBDatesCreatePage from "main/pages/UCSBDates/UCSBDatesCreatePage";
@@ -40,6 +41,15 @@ function App() {
               <Route exact path="/todos/list" element={<TodosIndexPage />} />
               <Route exact path="/todos/create" element={<TodosCreatePage />} />
               <Route exact path="/todos/edit/:todoId" element={<TodosEditPage />} />
+            </>
+          )
+        }
+        {
+          hasRole(currentUser, "ROLE_USER") && (
+            <>
+              <Route exact path="/menuItems/list" element={<MenuItemsIndexPage />} />
+              {/* <Route exact path="/menuItems/create" element={<MenuItemsCreatePage />} />
+              <Route exact path="/menuItems/edit/:menuItemId" element={<MenuItemsEditPage />} /> */}
             </>
           )
         }
