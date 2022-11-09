@@ -1,4 +1,5 @@
-import { fireEvent, render, waitFor } from "@testing-library/react";
+// import { fireEvent, render, waitFor } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 import ArticlesIndexPage from "main/pages/Articles/ArticlesIndexPage";
@@ -6,10 +7,10 @@ import ArticlesIndexPage from "main/pages/Articles/ArticlesIndexPage";
 
 import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
-import { articlesFixtures } from "fixtures/articlesFixtures";
+// import { articlesFixtures } from "fixtures/articlesFixtures";
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
-import mockConsole from "jest-mock-console";
+// import mockConsole from "jest-mock-console";
 
 
 const mockToast = jest.fn();
@@ -26,7 +27,7 @@ describe("ArticlesIndexPage tests", () => {
 
     const axiosMock =new AxiosMockAdapter(axios);
 
-    const testId = "ArticlesTable";
+    // const testId = "ArticlesTable";
 
     const setupUserOnly = () => {
         axiosMock.reset();
