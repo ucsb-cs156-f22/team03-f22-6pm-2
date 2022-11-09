@@ -1,5 +1,4 @@
-//import { fireEvent, render, waitFor } from "@testing-library/react";
-import { render } from "@testing-library/react";
+import { _fireEvent, render, waitFor } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 import UCSBOrganizationIndexPage from "main/pages/UCSBOrganization/UCSBOrganizationIndexPage";
@@ -7,7 +6,7 @@ import UCSBOrganizationIndexPage from "main/pages/UCSBOrganization/UCSBOrganizat
 
 import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
-//import { ucsbOrganizationFixtures } from "fixtures/ucsbOrganizationFixtures";
+import { ucsbOrganizationFixtures } from "fixtures/ucsbOrganizationFixtures";
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
 import _mockConsole from "jest-mock-console";
@@ -34,7 +33,7 @@ describe("UCSBOrganizationIndexPage tests", () => {
 
     const axiosMock =new AxiosMockAdapter(axios);
 
-    //const testId = "UCSBOrganizationTable";
+    const testId = "UCSBOrganizationTable";
 
     const setupUserOnly = () => {
         axiosMock.reset();
@@ -81,7 +80,7 @@ describe("UCSBOrganizationIndexPage tests", () => {
 
 
     });
-    /*
+    
     test("renders three UCSBOrganizations without crashing for regular user", async () => {
         setupUserOnly();
         const queryClient = new QueryClient();
@@ -95,13 +94,13 @@ describe("UCSBOrganizationIndexPage tests", () => {
             </QueryClientProvider>
         );
 
-        await waitFor(  () => { expect(getByTestId(`${testId}-cell-row-0-col-code`)).toHaveTextContent("testCode2"); } );
-        expect(getByTestId(`${testId}-cell-row-1-col-code`)).toHaveTextContent("testCode3");
-        expect(getByTestId(`${testId}-cell-row-2-col-code`)).toHaveTextContent("testCode4");
+        await waitFor(  () => { expect(getByTestId(`${testId}-cell-row-0-col-orgCode`)).toHaveTextContent("testCode2"); } );
+        expect(getByTestId(`${testId}-cell-row-1-col-orgCode`)).toHaveTextContent("testCode3");
+        expect(getByTestId(`${testId}-cell-row-2-col-orgCode`)).toHaveTextContent("testCode4");
 
     });
-    */
-    /*
+    
+    
     test("renders three UCSBOrganizations without crashing for admin user", async () => {
         setupAdminUser();
         const queryClient = new QueryClient();
@@ -115,13 +114,13 @@ describe("UCSBOrganizationIndexPage tests", () => {
             </QueryClientProvider>
         );
 
-        await waitFor(() => { expect(getByTestId(`${testId}-cell-row-0-col-code`)).toHaveTextContent("testCode2"); });
-        expect(getByTestId(`${testId}-cell-row-1-col-code`)).toHaveTextContent("testCode3");
-        expect(getByTestId(`${testId}-cell-row-2-col-code`)).toHaveTextContent("testCode4");
+        await waitFor(() => { expect(getByTestId(`${testId}-cell-row-0-col-orgCode`)).toHaveTextContent("testCode2"); });
+        expect(getByTestId(`${testId}-cell-row-1-col-orgCode`)).toHaveTextContent("testCode3");
+        expect(getByTestId(`${testId}-cell-row-2-col-orgCode`)).toHaveTextContent("testCode4");
 
     });
-    */
-    /*
+    
+    
     test("renders empty table when backend unavailable, user only", async () => {
         setupUserOnly();
 
@@ -138,16 +137,16 @@ describe("UCSBOrganizationIndexPage tests", () => {
 
         await waitFor(() => { expect(axiosMock.history.get.length).toBeGreaterThanOrEqual(3); });
 
-        const expectedHeaders = ['orgCode',  'orgTranslationShort', 'orgTranslation','inactive'];
+        const expectedHeaders = ['orgCode', 'orgTranslationShort', 'orgTranslation','Inactive?'];
     
         expectedHeaders.forEach((headerText) => {
           const header = getByText(headerText);
           expect(header).toBeInTheDocument();
         });
 
-        expect(queryByTestId(`${testId}-cell-row-0-col-code`)).not.toBeInTheDocument();
+        expect(queryByTestId(`${testId}-cell-row-0-col-orgCode`)).not.toBeInTheDocument();
     });
-    */
+    
     /*
     test("test what happens when you click delete, admin", async () => {
         setupAdminUser();
