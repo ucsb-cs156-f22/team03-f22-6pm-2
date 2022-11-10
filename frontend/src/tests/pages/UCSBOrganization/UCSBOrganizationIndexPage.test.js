@@ -1,4 +1,4 @@
-import { _fireEvent, render, waitFor } from "@testing-library/react";
+import { fireEvent, render, waitFor } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 import UCSBOrganizationIndexPage from "main/pages/UCSBOrganization/UCSBOrganizationIndexPage";
@@ -9,7 +9,7 @@ import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
 import { ucsbOrganizationFixtures } from "fixtures/ucsbOrganizationFixtures";
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
-import _mockConsole from "jest-mock-console";
+import mockConsole from "jest-mock-console";
  
  
 const mockToast = jest.fn();
@@ -61,7 +61,6 @@ describe("UCSBOrganizationIndexPage tests", () => {
                </MemoryRouter>
            </QueryClientProvider>
        );
- 
  
    });
  
@@ -117,7 +116,11 @@ describe("UCSBOrganizationIndexPage tests", () => {
        await waitFor(() => { expect(getByTestId(`${testId}-cell-row-0-col-orgCode`)).toHaveTextContent("testCode2"); });
        expect(getByTestId(`${testId}-cell-row-1-col-orgCode`)).toHaveTextContent("testCode3");
        expect(getByTestId(`${testId}-cell-row-2-col-orgCode`)).toHaveTextContent("testCode4");
- 
+
+        expect(getByTestId(`${testId}-cell-row-0-col-orgTranslationShort`)).toHaveTextContent("orgTransShort_1");
+        expect(getByTestId(`${testId}-cell-row-0-col-orgTranslation`)).toHaveTextContent("orgTrans_1");
+        expect(getByTestId(`${testId}-cell-row-0-col-Inactive?`)).toHaveTextContent("true");
+
    });
   
   
@@ -126,6 +129,8 @@ describe("UCSBOrganizationIndexPage tests", () => {
  
        const queryClient = new QueryClient();
        axiosMock.onGet("/api/UCSBOrganization/all").timeout();
+
+       const restoreConsole = mockConsole();
  
        const { queryByTestId, getByText } = render(
            <QueryClientProvider client={queryClient}>
@@ -135,18 +140,20 @@ describe("UCSBOrganizationIndexPage tests", () => {
            </QueryClientProvider>
        );
  
-       await waitFor(() => { expect(axiosMock.history.get.length).toBeGreaterThanOrEqual(3); });
+       await waitFor(() => { expect(axiosMock.history.get.length).toBeGreaterThanOrEqual(1); });
  
+       restoreConsole();
        const expectedHeaders = ['orgCode', 'orgTranslationShort', 'orgTranslation','Inactive?'];
-  
-       expectedHeaders.forEach((headerText) => {
-         const header = getByText(headerText);
-         expect(header).toBeInTheDocument();
-       });
- 
+       
+        expectedHeaders.forEach((headerText) => {
+            const header = getByText(headerText);
+            console.log("\nheader: " + header + "\n");
+            expect(header).toBeInTheDocument();
+        });
+        
+
        expect(queryByTestId(`${testId}-cell-row-0-col-orgCode`)).not.toBeInTheDocument();
    });
-  
    /*
    test("test what happens when you click delete, admin", async () => {
        setupAdminUser();
@@ -164,11 +171,11 @@ describe("UCSBOrganizationIndexPage tests", () => {
            </QueryClientProvider>
        );
  
-       await waitFor(() => { expect(getByTestId(`${testId}-cell-row-0-col-code`)).toBeInTheDocument(); });
+       await waitFor(() => { expect(getByTestId(`${testId}-cell-row-0-col-orgCode`)).toBeInTheDocument(); });
  
-      expect(getByTestId(`${testId}-cell-row-0-col-code`)).toHaveTextContent("testCode2");
+      expect(getByTestId(`${testId}-cell-row-0-col-orgCode`)).toHaveTextContent("testCode2");
  
- 
+        
        const deleteButton = getByTestId(`${testId}-cell-row-0-col-Delete-button`);
        expect(deleteButton).toBeInTheDocument();
      

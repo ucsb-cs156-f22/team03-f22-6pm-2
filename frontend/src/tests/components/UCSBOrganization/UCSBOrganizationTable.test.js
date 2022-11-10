@@ -28,6 +28,8 @@ describe("UCSBOrganizationTable tests", () => {
      </QueryClientProvider>
  
    );
+
+
  });
  test("renders without crashing for empty table for ordinary user", () => {
    const currentUser = currentUserFixtures.userOnly;
@@ -40,6 +42,7 @@ describe("UCSBOrganizationTable tests", () => {
      </QueryClientProvider>
  
    );
+
  });
  
  test("renders without crashing for empty table for admin", () => {
@@ -53,6 +56,7 @@ describe("UCSBOrganizationTable tests", () => {
      </QueryClientProvider>
  
    );
+
  });
  /*
  test("Has the expected column headers and content for adminUser", () => {
