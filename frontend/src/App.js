@@ -11,7 +11,10 @@ import DiningCommonsIndexPage from "main/pages/DiningCommons/DiningCommonsIndexP
 import DiningCommonsCreatePage from "main/pages/DiningCommons/DiningCommonsCreatePage";
 import DiningCommonsEditPage from "main/pages/DiningCommons/DiningCommonsEditPage";
 
+
 import MenuItemsIndexPage from "main/pages/MenuItems/MenuItemsIndexPage";
+
+import HelpRequestIndexPage from "main/pages/HelpRequest/HelpRequestIndexPage";
 
 import MenuItemReviewIndexPage from "main/pages/MenuItemReview/MenuItemReviewIndexPage";
 
@@ -86,6 +89,13 @@ function App() {
             <>
               <Route exact path="/diningCommons/create" element={<DiningCommonsCreatePage />} />
               <Route exact path="/diningCommons/edit/:code" element={<DiningCommonsEditPage />} />
+            </>
+          )
+        }
+        {
+          hasRole(currentUser, "ROLE_USER") && (
+            <>
+              <Route exact path="/helpRequest/list" element={<HelpRequestIndexPage />} />
             </>
           )
         }
