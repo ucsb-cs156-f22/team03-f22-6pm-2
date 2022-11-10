@@ -1,4 +1,5 @@
 // import { fireEvent, render, waitFor } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 import RecommendationIndexPage from "main/pages/Recommendation/RecommendationIndexPage";
@@ -9,7 +10,7 @@ import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
 // import { recommendationFixtures } from "fixtures/recommendationFixtures";
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
-import mockConsole from "jest-mock-console";
+// import mockConsole from "jest-mock-console";
 
 
 const mockToast = jest.fn();
