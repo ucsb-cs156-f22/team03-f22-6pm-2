@@ -5,7 +5,7 @@ import OurTable from "main/components/OurTable";
 // import { useNavigate } from "react-router-dom";
 // import { hasRole } from "main/utils/currentUser";
 
-export default function ArticlesTable({ articles, currentUser }) {
+export default function ArticlesTable({ articles, _currentUser }) {
 
     // const navigate = useNavigate();
 
@@ -17,7 +17,7 @@ export default function ArticlesTable({ articles, currentUser }) {
     // const deleteMutation = useBackendMutation(
     //     cellToAxiosParamsDelete,
     //     { onSuccess: onDeleteSuccess },
-    //     ["/api/articles/all"]
+    //     ["/api/Article/all"]
     // );
     // // Stryker enable all 
 

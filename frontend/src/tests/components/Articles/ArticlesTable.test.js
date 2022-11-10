@@ -1,6 +1,5 @@
-import { render } from "@testing-library/react";
-// import { fireEvent, render, waitFor } from "@testing-library/react";
-// import { articlesFixtures } from "fixtures/articlesFixtures";
+import { _fireEvent, render, _waitFor } from "@testing-library/react";
+import { _articlesFixtures } from "fixtures/articlesFixtures";
 import ArticlesTable from "main/components/Articles/ArticlesTable"
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";

@@ -1,5 +1,4 @@
-// import { fireEvent, render, waitFor } from "@testing-library/react";
-import { render, waitFor } from "@testing-library/react";
+import { _fireEvent, render, waitFor } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 import ArticlesIndexPage from "main/pages/Articles/ArticlesIndexPage";
@@ -46,7 +45,7 @@ describe("ArticlesIndexPage tests", () => {
     test("renders without crashing for regular user", () => {
         setupUserOnly();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/articles/all").reply(200, []);
+        axiosMock.onGet("/api/Article/all").reply(200, []);
 
         render(
             <QueryClientProvider client={queryClient}>
@@ -62,7 +61,7 @@ describe("ArticlesIndexPage tests", () => {
     test("renders without crashing for admin user", () => {
         setupAdminUser();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/articles/all").reply(200, []);
+        axiosMock.onGet("/api/Article/all").reply(200, []);
 
         render(
             <QueryClientProvider client={queryClient}>
@@ -78,7 +77,7 @@ describe("ArticlesIndexPage tests", () => {
     test("renders three articles without crashing for regular user", async () => {
         setupUserOnly();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/articles/all").reply(200, articlesFixtures.threeArticles);
+        axiosMock.onGet("/api/Article/all").reply(200, articlesFixtures.threeArticles);
 
         const { getByTestId } = render(
             <QueryClientProvider client={queryClient}>
@@ -97,7 +96,7 @@ describe("ArticlesIndexPage tests", () => {
     test("renders three articles without crashing for admin user", async () => {
         setupAdminUser();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/articles/all").reply(200, articlesFixtures.threeArticles);
+        axiosMock.onGet("/api/Article/all").reply(200, articlesFixtures.threeArticles);
 
         const { getByTestId } = render(
             <QueryClientProvider client={queryClient}>
@@ -117,7 +116,7 @@ describe("ArticlesIndexPage tests", () => {
         setupUserOnly();
 
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/articles/all").timeout();
+        axiosMock.onGet("/api/Article/all").timeout();
 
         const restoreConsole = mockConsole();
 
@@ -139,8 +138,8 @@ describe("ArticlesIndexPage tests", () => {
     //     setupAdminUser();
 
     //     const queryClient = new QueryClient();
-    //     axiosMock.onGet("/api/articles/all").reply(200, articlesFixtures.threeArticles);
-    //     axiosMock.onDelete("/api/articles").reply(200, "Article with id 1 was deleted");
+    //     axiosMock.onGet("/api/Article/all").reply(200, articlesFixtures.threeArticles);
+    //     axiosMock.onDelete("/api/Article").reply(200, "Article with id 1 was deleted");
 
 
     //     const { getByTestId } = render(
