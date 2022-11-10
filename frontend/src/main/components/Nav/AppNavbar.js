@@ -68,6 +68,22 @@ export default function AppNavbar({ currentUser, systemInfo, doLogout, currentUr
                   <NavDropdown title="Recommendation" id="appnavbar-recommendation-dropdown" data-testid="appnavbar-recommendation-dropdown" >
                     <NavDropdown.Item as={Link} to="/recommendation/list" data-testid="appnavbar-recommendation-list">List</NavDropdown.Item>
                     <NavDropdown.Item as={Link} to="/recommendation/create" data-testid="appnavbar-recommendation-create">Create</NavDropdown.Item>
+                   </NavDropdown>
+                )
+              }        
+              {
+                hasRole(currentUser, "ROLE_USER") && (
+                  <NavDropdown title="Menu Items" id="appnavbar-menu-items-dropdown" data-testid="appnavbar-menu-items-dropdown" >
+                    <NavDropdown.Item as={Link} to="/menuItems/list" data-testid="appnavbar-menu-items-list">List Menu Items</NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="/menuItems/create" data-testid="appnavbar-menu-items-create">Create Menu Item</NavDropdown.Item>
+                  </NavDropdown>
+                )
+              }
+              {
+                hasRole(currentUser, "ROLE_USER") && (
+                  <NavDropdown title="Help Request" id="appnavbar-help-request-dropdown" data-testid="appnavbar-help-request-dropdown" >
+                    <NavDropdown.Item as={Link} to="/helpRequest/list" data-testid="appnavbar-help-request-list">List</NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="/helpRequest/create" data-testid="appnavbar-help-request-create">Create</NavDropdown.Item>
                   </NavDropdown>
                 )
               }
@@ -80,6 +96,30 @@ export default function AppNavbar({ currentUser, systemInfo, doLogout, currentUr
                         <NavDropdown.Item as={Link} to="/ucsbdates/create" data-testid="appnavbar-ucsbdates-create">Create</NavDropdown.Item>
                       )
                     }
+                  </NavDropdown>
+                )
+              }
+              {
+                hasRole(currentUser, "ROLE_USER") && (
+                  <NavDropdown title="MenuItemReviews" id="appnavbar-menuitemreviews-dropdown" data-testid="appnavbar-menuitemreviews-dropdown" >
+                    <NavDropdown.Item as={Link} to="/MenuItemReview/list">List Menu Item Reviews</NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="/MenuItemReview/create">Create Menu Item Review</NavDropdown.Item>
+                  </NavDropdown>
+                )
+              }
+              {
+                hasRole(currentUser, "ROLE_USER") && (
+                  <NavDropdown title="UCSBOrganizations" id="appnavbar-ucsborganizations-dropdown" data-testid="appnavbar-ucsborganizations-dropdown" >
+                    <NavDropdown.Item as={Link} to="/UCSBOrganization/list">List Organizations</NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="/UCSBOrganization/create">Create Organization</NavDropdown.Item>
+                  </NavDropdown>
+                )
+              }
+              {
+                hasRole(currentUser, "ROLE_USER") && (
+                  <NavDropdown title="Articles" id="appnavbar-articles-dropdown" data-testid="appnavbar-articles-dropdown" >
+                    <NavDropdown.Item as={Link} to="/articles/list" data-testid="appnavbar-articles-list">List</NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="/articles/create" data-testid="appnavbar-articles-create">Create</NavDropdown.Item>
                   </NavDropdown>
                 )
               }
