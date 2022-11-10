@@ -42,18 +42,18 @@ describe("MenuItemReviewTable tests", () => {
     );
   });
 
-  // test("renders without crashing for empty table for admin", () => {
-  //   const currentUser = currentUserFixtures.adminUser;
+  test("renders without crashing for empty table for admin", () => {
+    const currentUser = currentUserFixtures.adminUser;
 
-  //   render(
-  //     <QueryClientProvider client={queryClient}>
-  //       <MemoryRouter>
-  //         <MenuItemReviewTable menuitemreview={[]} currentUser={currentUser} />
-  //       </MemoryRouter>
-  //     </QueryClientProvider>
+    render(
+      <QueryClientProvider client={queryClient}>
+        <MemoryRouter>
+          <MenuItemReviewTable menuitemreview={[]} currentUser={currentUser} />
+        </MemoryRouter>
+      </QueryClientProvider>
 
-  //   );
-  // });
+    );
+  });
 
   // test("Has the expected colum headers and content for adminUser", () => {
 
