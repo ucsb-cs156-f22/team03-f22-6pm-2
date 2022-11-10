@@ -73,14 +73,6 @@ function App() {
             </>
           )
         }
-        {
-          hasRole(currentUser, "ROLE_USER") && (
-            <>
-              <Route exact path="/Recommendation/list" element={<UCSBDatesIndexPage />} />
-            </>
-          )
-        }
-
       </Routes>
     </BrowserRouter>
   );
