@@ -12,10 +12,16 @@ import DiningCommonsCreatePage from "main/pages/DiningCommons/DiningCommonsCreat
 import DiningCommonsEditPage from "main/pages/DiningCommons/DiningCommonsEditPage";
 
 
+import MenuItemReviewIndexPage from "main/pages/MenuItemReview/MenuItemReviewIndexPage";
+
+import UCSBOrganizationIndexPage from "main/pages/UCSBOrganization/UCSBOrganizationIndexPage";
+
+
 import UCSBDatesIndexPage from "main/pages/UCSBDates/UCSBDatesIndexPage";
 import UCSBDatesCreatePage from "main/pages/UCSBDates/UCSBDatesCreatePage";
 import UCSBDatesEditPage from "main/pages/UCSBDates/UCSBDatesEditPage";
 
+import ArticlesIndexPage from "main/pages/Articles/ArticlesIndexPage";
 
 import { hasRole, useCurrentUser } from "main/utils/currentUser";
 
@@ -46,6 +52,22 @@ function App() {
         {
           hasRole(currentUser, "ROLE_USER") && (
             <>
+              <Route exact path="/MenuItemReview/list" element={<MenuItemReviewIndexPage />} />
+              <Route exact path="/MenuItemReview/create" element={<MenuItemReviewIndexPage />} />
+            </>
+          )
+        }
+        {
+          hasRole(currentUser, "ROLE_USER") && (
+            <>
+              <Route exact path="/UCSBOrganization/list" element={<UCSBOrganizationIndexPage />} />
+              <Route exact path="/UCSBOrganization/create" element={<UCSBOrganizationIndexPage />} />
+            </>
+          )
+        }
+        {
+          hasRole(currentUser, "ROLE_USER") && (
+            <>
               <Route exact path="/diningCommons/list" element={<DiningCommonsIndexPage />} />
             </>
           )
@@ -70,6 +92,14 @@ function App() {
             <>
               <Route exact path="/ucsbdates/create" element={<UCSBDatesCreatePage />} />
               <Route exact path="/ucsbdates/edit/:id" element={<UCSBDatesEditPage />} />
+            </>
+          )
+        }
+        {
+          hasRole(currentUser, "ROLE_USER") && (
+            <>
+              <Route exact path="/articles/list" element={<ArticlesIndexPage />} />
+              <Route exact path="/articles/create" element={<ArticlesIndexPage />} />
             </>
           )
         }
