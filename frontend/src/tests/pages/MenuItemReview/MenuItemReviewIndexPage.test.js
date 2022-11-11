@@ -1,4 +1,4 @@
-import { _fireEvent, render, waitFor } from "@testing-library/react";
+import { fireEvent, render, waitFor } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 import MenuItemReviewIndexPage from "main/pages/MenuItemReview/MenuItemReviewIndexPage";
@@ -42,7 +42,7 @@ describe("MenuItemReviewIndexPage tests", () => {
         axiosMock.onGet("/api/systemInfo").reply(200, systemInfoFixtures.showingNeither);
     };
 
-    test("renders without crashing for regular user", () => {
+   test("renders without crashing for regular user", () => {
         setupUserOnly();
         const queryClient = new QueryClient();
         axiosMock.onGet("/api/MenuItemReview/all").reply(200, []);
@@ -134,36 +134,34 @@ describe("MenuItemReviewIndexPage tests", () => {
         expect(queryByTestId(`${testId}-cell-row-0-col-id`)).not.toBeInTheDocument();
     });
 
-    // test("test what happens when you click delete, admin", async () => {
-    //     setupAdminUser();
+    test("test what happens when you click delete, admin", async () => {
+        setupAdminUser();
 
-    //     const queryClient = new QueryClient();
-    //     axiosMock.onGet("/api/ucsbdates/all").reply(200, ucsbDatesFixtures.threeDates);
-    //     axiosMock.onDelete("/api/ucsbdates").reply(200, "UCSBDate with id 1 was deleted");
-
-
-    //     const { getByTestId } = render(
-    //         <QueryClientProvider client={queryClient}>
-    //             <MemoryRouter>
-    //                 <UCSBDatesIndexPage />
-    //             </MemoryRouter>
-    //         </QueryClientProvider>
-    //     );
-
-    //     await waitFor(() => { expect(getByTestId(`${testId}-cell-row-0-col-id`)).toBeInTheDocument(); });
-
-    //    expect(getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("1"); 
+        const queryClient = new QueryClient();
+        axiosMock.onGet("/api/MenuItemReview/all").reply(200, menuItemReviewFixtures.threeMenuItemReviews);
+        axiosMock.onDelete("/api/MenuItemReview", {params: {id: 1}}).reply(200, "MenuItemReview with id 1 was deleted");
 
 
-    //     const deleteButton = getByTestId(`${testId}-cell-row-0-col-Delete-button`);
-    //     expect(deleteButton).toBeInTheDocument();
-       
-    //     fireEvent.click(deleteButton);
+        const { getByTestId } = render(
+            <QueryClientProvider client={queryClient}>
+                <MemoryRouter>
+                    <MenuItemReviewIndexPage />
+                </MemoryRouter>
+            </QueryClientProvider>
+        );
 
-    //     await waitFor(() => { expect(mockToast).toBeCalledWith("UCSBDate with id 1 was deleted") });
+        await waitFor(() => { expect(getByTestId(`${testId}-cell-row-0-col-id`)).toBeInTheDocument(); });
 
-    // });
+       expect(getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("1"); 
+
+
+        const deleteButton = getByTestId(`${testId}-cell-row-0-col-Delete-button`);
+        expect(deleteButton).toBeInTheDocument();
+
+        fireEvent.click(deleteButton);
+
+        await waitFor(() => { expect(mockToast).toBeCalledWith("MenuItemReview with id 1 was deleted") });
+
+    });
 
 });
-
-
