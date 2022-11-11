@@ -13,6 +13,10 @@ import DiningCommonsEditPage from "main/pages/DiningCommons/DiningCommonsEditPag
 
 import MenuItemsIndexPage from "main/pages/MenuItems/MenuItemsIndexPage";
 
+import MenuItemsIndexPage from "main/pages/MenuItems/MenuItemsIndexPage";
+
+import HelpRequestIndexPage from "main/pages/HelpRequest/HelpRequestIndexPage";
+
 import MenuItemReviewIndexPage from "main/pages/MenuItemReview/MenuItemReviewIndexPage";
 
 import UCSBOrganizationIndexPage from "main/pages/UCSBOrganization/UCSBOrganizationIndexPage";
@@ -76,7 +80,6 @@ function App() {
           hasRole(currentUser, "ROLE_USER") && (
             <>
               <Route exact path="/UCSBOrganization/list" element={<UCSBOrganizationIndexPage />} />
-              <Route exact path="/UCSBOrganization/create" element={<UCSBOrganizationIndexPage />} />
             </>
           )
         }
@@ -92,6 +95,13 @@ function App() {
             <>
               <Route exact path="/diningCommons/create" element={<DiningCommonsCreatePage />} />
               <Route exact path="/diningCommons/edit/:code" element={<DiningCommonsEditPage />} />
+            </>
+          )
+        }
+        {
+          hasRole(currentUser, "ROLE_USER") && (
+            <>
+              <Route exact path="/helpRequest/list" element={<HelpRequestIndexPage />} />
             </>
           )
         }
@@ -118,7 +128,6 @@ function App() {
             </>
           )
         }
-
       </Routes>
     </BrowserRouter>
   );
