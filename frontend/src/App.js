@@ -11,11 +11,23 @@ import DiningCommonsIndexPage from "main/pages/DiningCommons/DiningCommonsIndexP
 import DiningCommonsCreatePage from "main/pages/DiningCommons/DiningCommonsCreatePage";
 import DiningCommonsEditPage from "main/pages/DiningCommons/DiningCommonsEditPage";
 
+import MenuItemsIndexPage from "main/pages/MenuItems/MenuItemsIndexPage";
+
 import HelpRequestIndexPage from "main/pages/HelpRequest/HelpRequestIndexPage";
+
+import MenuItemReviewIndexPage from "main/pages/MenuItemReview/MenuItemReviewIndexPage";
+
+import UCSBOrganizationIndexPage from "main/pages/UCSBOrganization/UCSBOrganizationIndexPage";
+
 
 import UCSBDatesIndexPage from "main/pages/UCSBDates/UCSBDatesIndexPage";
 import UCSBDatesCreatePage from "main/pages/UCSBDates/UCSBDatesCreatePage";
 import UCSBDatesEditPage from "main/pages/UCSBDates/UCSBDatesEditPage";
+
+
+import RecommendationIndexPage from "main/pages/Recommendation/RecommendationIndexPage";
+
+import ArticlesIndexPage from "main/pages/Articles/ArticlesIndexPage";
 
 
 import { hasRole, useCurrentUser } from "main/utils/currentUser";
@@ -41,6 +53,29 @@ function App() {
               <Route exact path="/todos/list" element={<TodosIndexPage />} />
               <Route exact path="/todos/create" element={<TodosCreatePage />} />
               <Route exact path="/todos/edit/:todoId" element={<TodosEditPage />} />
+            </>
+          )
+        }
+        {
+          hasRole(currentUser, "ROLE_USER") && (
+            <>
+              <Route exact path="/menuItems/list" element={<MenuItemsIndexPage />} />
+              <Route exact path="/menuItems/create" element={<MenuItemsIndexPage />} />
+            </>
+          )
+        }
+        {
+          hasRole(currentUser, "ROLE_USER") && (
+            <>
+              <Route exact path="/MenuItemReview/list" element={<MenuItemReviewIndexPage />} />
+              <Route exact path="/MenuItemReview/create" element={<MenuItemReviewIndexPage />} />
+            </>
+          )
+        }
+        {
+          hasRole(currentUser, "ROLE_USER") && (
+            <>
+              <Route exact path="/UCSBOrganization/list" element={<UCSBOrganizationIndexPage />} />
             </>
           )
         }
@@ -81,7 +116,22 @@ function App() {
             </>
           )
         }
-
+        {
+          hasRole(currentUser, "ROLE_USER") && (
+            <>
+              <Route exact path="/recommendation/list" element={<RecommendationIndexPage />} />
+              <Route exact path="/recommendation/create" element={<RecommendationIndexPage />} />
+            </>
+          )
+        }
+        {
+          hasRole(currentUser, "ROLE_USER") && (
+            <>
+              <Route exact path="/articles/list" element={<ArticlesIndexPage />} />
+              <Route exact path="/articles/create" element={<ArticlesIndexPage />} />
+            </>
+          )
+        }
       </Routes>
     </BrowserRouter>
   );
