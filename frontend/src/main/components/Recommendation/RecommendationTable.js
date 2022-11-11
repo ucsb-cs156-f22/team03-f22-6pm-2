@@ -50,7 +50,6 @@ export default function RecommendationTable({ recommendations, _currentUser }) {
         },
         {
             Header: 'Done',
-            accessor: 'done',
             id: 'done',
             accessor: (row, _rowIndex) => String(row.done) // hack needed for boolean values to show up
         }

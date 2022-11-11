@@ -1,4 +1,4 @@
-import { _fireEvent, render, _waitFor } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import { recommendationFixtures } from "fixtures/recommendationFixtures";
 import RecommendationTable from "main/components/Recommendation/RecommendationTable"
 import { QueryClient, QueryClientProvider } from "react-query";
@@ -82,8 +82,13 @@ describe("RecommendationTable tests", () => {
       expect(header).toBeInTheDocument();
     });
 
-    expect(getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("1");
-    expect(getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent("2");
+    expect(getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("2");
+    expect(getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent("3");
+    expect(getByTestId(`${testId}-cell-row-2-col-id`)).toHaveTextContent("4");
+    expect(getByTestId(`${testId}-cell-row-0-col-requesterEmail`)).toHaveTextContent("cgaucho@ucsb.edu");
+    expect(getByTestId(`${testId}-cell-row-1-col-requesterEmail`)).toHaveTextContent("ldelplaya@ucsb.edu");
+    expect(getByTestId(`${testId}-cell-row-0-col-done`)).toHaveTextContent(true);
+    expect(getByTestId(`${testId}-cell-row-1-col-done`)).toHaveTextContent(false);
 
     // const editButton = getByTestId(`${testId}-cell-row-0-col-Edit-button`);
     // expect(editButton).toBeInTheDocument();
