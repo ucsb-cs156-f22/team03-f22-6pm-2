@@ -1,5 +1,5 @@
 import { _fireEvent, render, _waitFor } from "@testing-library/react";
-import { _recommendationFixtures } from "fixtures/recommendationFixtures";
+import { recommendationFixtures } from "fixtures/recommendationFixtures";
 import RecommendationTable from "main/components/Recommendation/RecommendationTable"
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
@@ -55,45 +55,45 @@ describe("RecommendationTable tests", () => {
     );
   });
 
-  // test("Has the expected colum headers and content for adminUser", () => {
+  test("Has the expected colum headers and content for adminUser", () => {
 
-  //   const currentUser = currentUserFixtures.adminUser;
+    const currentUser = currentUserFixtures.adminUser;
 
-  //   const { getByText, getByTestId } = render(
-  //     <QueryClientProvider client={queryClient}>
-  //       <MemoryRouter>
-  //         <RecommendationTable recommendations={recommendationFixtures.threeRecommendations} currentUser={currentUser} />
-  //       </MemoryRouter>
-  //     </QueryClientProvider>
+    const { getByText, getByTestId } = render(
+      <QueryClientProvider client={queryClient}>
+        <MemoryRouter>
+          <RecommendationTable recommendations={recommendationFixtures.threeRecommendations} currentUser={currentUser} />
+        </MemoryRouter>
+      </QueryClientProvider>
 
-  //   );
+    );
 
-  //   const expectedHeaders = ["Id", "RequesterEmail", "ProfessorEmail", "Explanation", "DateRequested", "DateNeeded", "Done"];
-  //   const expectedFields = ["id", "requesterEmail", "professorEmail", "explanation", "dateRequested", "dateNeeded", "done"];
-  //   const testId = "RecommendationTable";
+    const expectedHeaders = ["Id", "RequesterEmail", "ProfessorEmail", "Explanation", "DateRequested", "DateNeeded", "Done"];
+    const expectedFields = ["id", "requesterEmail", "professorEmail", "explanation", "dateRequested", "dateNeeded", "done"];
+    const testId = "RecommendationTable";
 
-  //   expectedHeaders.forEach((headerText) => {
-  //     const header = getByText(headerText);
-  //     expect(header).toBeInTheDocument();
-  //   });
+    expectedHeaders.forEach((headerText) => {
+      const header = getByText(headerText);
+      expect(header).toBeInTheDocument();
+    });
 
-  //   expectedFields.forEach((field) => {
-  //     const header = getByTestId(`${testId}-cell-row-0-col-${field}`);
-  //     expect(header).toBeInTheDocument();
-  //   });
+    expectedFields.forEach((field) => {
+      const header = getByTestId(`${testId}-cell-row-0-col-${field}`);
+      expect(header).toBeInTheDocument();
+    });
 
-    // expect(getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("1");
-    // expect(getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent("2");
+    expect(getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("1");
+    expect(getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent("2");
 
     // const editButton = getByTestId(`${testId}-cell-row-0-col-Edit-button`);
     // expect(editButton).toBeInTheDocument();
     // expect(editButton).toHaveClass("btn-primary");
 
-    // const deleteButton = getByTestId(`${testId}-cell-row-0-col-Delete-button`);
-    // expect(deleteButton).toBeInTheDocument();
-    // expect(deleteButton).toHaveClass("btn-danger");
+    const deleteButton = getByTestId(`${testId}-cell-row-0-col-Delete-button`);
+    expect(deleteButton).toBeInTheDocument();
+    expect(deleteButton).toHaveClass("btn-danger");
 
-  // });
+  });
 
   // test("Edit button navigates to the edit page for admin user", async () => {
 
