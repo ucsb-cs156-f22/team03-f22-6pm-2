@@ -383,7 +383,6 @@ describe("AppNavbar tests", () => {
                 </MemoryRouter>
             </QueryClientProvider>
         );
-        
         await waitFor(() => expect(getByTestId("appnavbar-recommendation-dropdown")).toBeInTheDocument());
         const dropdown = getByTestId("appnavbar-recommendation-dropdown");
         const aElement = dropdown.querySelector("a");
@@ -418,7 +417,6 @@ describe("AppNavbar tests", () => {
 
     });
 
-
     test("renders the recommendation menu correctly for an admin", async () => {
 
         const currentUser = currentUserFixtures.adminUser;
@@ -433,7 +431,6 @@ describe("AppNavbar tests", () => {
                 </MemoryRouter>
             </QueryClientProvider>
         );
-        
         await waitFor(() => expect(getByTestId("appnavbar-recommendation-dropdown")).toBeInTheDocument());
         const dropdown = getByTestId("appnavbar-recommendation-dropdown");
         const aElement = dropdown.querySelector("a");
