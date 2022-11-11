@@ -7,10 +7,10 @@ import RecommendationIndexPage from "main/pages/Recommendation/RecommendationInd
 
 import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
-// import { recommendationFixtures } from "fixtures/recommendationFixtures";
+import { recommendationFixtures } from "fixtures/recommendationFixtures";
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
-// import mockConsole from "jest-mock-console";
+import mockConsole from "jest-mock-console";
 
 
 const mockToast = jest.fn();
@@ -27,7 +27,7 @@ describe("RecommendationIndexPage tests", () => {
 
     const axiosMock =new AxiosMockAdapter(axios);
 
-    // const testId = "RecommendationTable";
+    const testId = "RecommendationTable";
 
     const setupUserOnly = () => {
         axiosMock.reset();
