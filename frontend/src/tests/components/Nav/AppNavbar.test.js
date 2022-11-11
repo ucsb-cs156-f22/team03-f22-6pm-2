@@ -107,29 +107,29 @@ describe("AppNavbar tests", () => {
 
     });
 
-    // test("renders the MenuItemReview menu correctly for an admin", async () => {
+    test("renders the MenuItemReview menu correctly for an admin", async () => {
 
-    //     const currentUser = currentUserFixtures.adminUser;
-    //     const systemInfo = systemInfoFixtures.showingBoth;
+        const currentUser = currentUserFixtures.adminUser;
+        const systemInfo = systemInfoFixtures.showingBoth;
 
-    //     const doLogin = jest.fn();
+        const doLogin = jest.fn();
 
-    //     const {getByTestId  } = render(
-    //         <QueryClientProvider client={queryClient}>
-    //             <MemoryRouter>
-    //                 <AppNavbar currentUser={currentUser} systemInfo={systemInfo} doLogin={doLogin} />
-    //             </MemoryRouter>
-    //         </QueryClientProvider>
-    //     );
+        const {getByTestId  } = render(
+            <QueryClientProvider client={queryClient}>
+                <MemoryRouter>
+                    <AppNavbar currentUser={currentUser} systemInfo={systemInfo} doLogin={doLogin} />
+                </MemoryRouter>
+            </QueryClientProvider>
+        );
 
-    //     await waitFor(() => expect(getByTestId("appnavbar-menuitemreviews-dropdown")).toBeInTheDocument());
-    //     const dropdown = getByTestId("appnavbar-menuitemreviews-dropdown");
-    //     const aElement = dropdown.querySelector("a");
-    //     expect(aElement).toBeInTheDocument();
-    //     aElement?.click();
-    //     await waitFor( () => expect(getByTestId(/appnavbar-menuitemreviews-create/)).toBeInTheDocument() );
+        await waitFor(() => expect(getByTestId("appnavbar-menuitemreviews-dropdown")).toBeInTheDocument());
+        const dropdown = getByTestId("appnavbar-menuitemreviews-dropdown");
+        const aElement = dropdown.querySelector("a");
+        expect(aElement).toBeInTheDocument();
+        aElement?.click();
+        //await waitFor( () => expect(getByTestId(/appnavbar-menuitemreviews-create/)).toBeInTheDocument() );
 
-    // });
+    });
 
     test("renders the AppNavbarLocalhost when on http://localhost:3000", async () => {
 
