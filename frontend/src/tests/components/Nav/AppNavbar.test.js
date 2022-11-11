@@ -132,6 +132,7 @@ describe("AppNavbar tests", () => {
     });
 
     test("renders the UCSBOrganization menu correctly for a user", async () => {
+
         const currentUser = currentUserFixtures.userOnly;
         const systemInfo = systemInfoFixtures.showingBoth;
 

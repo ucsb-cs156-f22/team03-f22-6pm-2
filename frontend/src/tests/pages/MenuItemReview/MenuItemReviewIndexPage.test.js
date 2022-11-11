@@ -42,7 +42,7 @@ describe("MenuItemReviewIndexPage tests", () => {
         axiosMock.onGet("/api/systemInfo").reply(200, systemInfoFixtures.showingNeither);
     };
 
-    test("renders without crashing for regular user", () => {
+   test("renders without crashing for regular user", () => {
         setupUserOnly();
         const queryClient = new QueryClient();
         axiosMock.onGet("/api/MenuItemReview/all").reply(200, []);
@@ -157,7 +157,7 @@ describe("MenuItemReviewIndexPage tests", () => {
 
         const deleteButton = getByTestId(`${testId}-cell-row-0-col-Delete-button`);
         expect(deleteButton).toBeInTheDocument();
-       
+
         fireEvent.click(deleteButton);
 
         await waitFor(() => { expect(mockToast).toBeCalledWith("MenuItemReview with id 1 was deleted") });
@@ -165,5 +165,3 @@ describe("MenuItemReviewIndexPage tests", () => {
     });
 
 });
-
-
