@@ -1,5 +1,5 @@
 import { _fireEvent, render, _waitFor } from "@testing-library/react";
-import { recommendationFixtures } from "fixtures/recommendationFixtures";
+import { _recommendationFixtures } from "fixtures/recommendationFixtures";
 import RecommendationTable from "main/components/Recommendation/RecommendationTable"
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
