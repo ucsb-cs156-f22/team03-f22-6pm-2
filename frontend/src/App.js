@@ -13,8 +13,6 @@ import DiningCommonsEditPage from "main/pages/DiningCommons/DiningCommonsEditPag
 
 import MenuItemsIndexPage from "main/pages/MenuItems/MenuItemsIndexPage";
 
-import MenuItemsIndexPage from "main/pages/MenuItems/MenuItemsIndexPage";
-
 import HelpRequestIndexPage from "main/pages/HelpRequest/HelpRequestIndexPage";
 
 import MenuItemReviewIndexPage from "main/pages/MenuItemReview/MenuItemReviewIndexPage";
@@ -58,16 +56,10 @@ function App() {
           hasRole(currentUser, "ROLE_USER") && (
             <>
               <Route exact path="/menuItems/list" element={<MenuItemsIndexPage />} />
-            </>
-          )
-        }
-        {/* {
-          hasRole(currentUser, "ROLE_ADMIN") && (
-            <>
               <Route exact path="/menuItems/create" element={<MenuItemsIndexPage />} />
             </>
           )
-        } */}
+        }
         {
           hasRole(currentUser, "ROLE_USER") && (
             <>
