@@ -1,5 +1,5 @@
 import {  render } from "@testing-library/react";
-import { _ucsbOrganizationFixtures } from "fixtures/ucsbOrganizationFixtures";
+import { ucsbOrganizationFixtures } from "fixtures/ucsbOrganizationFixtures";
 import UCSBOrganizationTable from "main/components/UCSBOrganization/UCSBOrganizationTable";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
@@ -58,7 +58,7 @@ describe("UCSBOrganizationTable tests", () => {
    );
 
  });
- /*
+ 
  test("Has the expected column headers and content for adminUser", () => {
  
    const currentUser = currentUserFixtures.adminUser;
@@ -66,7 +66,7 @@ describe("UCSBOrganizationTable tests", () => {
    const { getByText, getByTestId } = render(
      <QueryClientProvider client={queryClient}>
        <MemoryRouter>
-         <UCSBOrganizationTable ucsbOrganizations={UCSBOrganizationFixtures.threeOrganizations} currentUser={currentUser} />
+         <UCSBOrganizationTable ucsbOrganizations={ucsbOrganizationFixtures.threeOrganizations} currentUser={currentUser} />
        </MemoryRouter>
      </QueryClientProvider>
  
@@ -101,7 +101,6 @@ describe("UCSBOrganizationTable tests", () => {
    expect(deleteButton).toHaveClass("btn-danger");
  
  });
- */
  // test("Edit button navigates to the edit page for admin user", async () => {
  
  //   const currentUser = currentUserFixtures.adminUser;
