@@ -6,7 +6,7 @@ import MenuItemsIndexPage from "main/pages/MenuItems/MenuItemsIndexPage";
 
 import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
-import { menuItemsFixtures } from "fixtures/menuItemsFixtures";
+// import { menuItemsFixtures } from "fixtures/menuItemsFixtures";
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
 // import mockConsole from "jest-mock-console";
