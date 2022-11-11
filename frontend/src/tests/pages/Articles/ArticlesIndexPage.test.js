@@ -139,7 +139,7 @@ describe("ArticlesIndexPage tests", () => {
 
         const queryClient = new QueryClient();
         axiosMock.onGet("/api/Article/all").reply(200, articlesFixtures.threeArticles);
-        axiosMock.onDelete("/api/Article").reply(200, "Article with id 1 was deleted");
+        axiosMock.onDelete("/api/Article", {params: {id: 1}}).reply(200, "Article with id 1 was deleted");
 
 
         const { getByTestId } = render(

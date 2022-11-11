@@ -1,26 +1,20 @@
 import OurTable, { ButtonColumn } from "main/components/OurTable";
 import { useBackendMutation } from "main/utils/useBackend";
-import { cellToAxiosParamsDelete, onDeleteSuccess } from "main/utils/UCSBDateUtils"
+import { onDeleteSuccess } from "main/utils/UCSBDateUtils"
 import { _useNavigate } from "react-router-dom";
 import { hasRole } from "main/utils/currentUser";
 
-// export function cellToAxiosParamsDelete(cell) {
-//     return {
-//         url: "/api/Article",
-//         method: "DELETE",
-//         params: {
-//             id: cell.row.values.id
-//         }
-//     }
-// }
+export function cellToAxiosParamsDelete(cell) {
+    return {
+        url: "/api/Article",
+        method: "DELETE",
+        params: {
+            id: cell.row.values.id
+        }
+    }
+}
 
 export default function ArticlesTable({ articles, currentUser }) {
-
-    // const navigate = useNavigate();
-
-    // const editCallback = (cell) => {
-    //     navigate(`/articles/edit/${cell.row.values.id}`)
-    // }
 
     // Stryker disable all : hard to test for query caching
     const deleteMutation = useBackendMutation(
@@ -55,14 +49,13 @@ export default function ArticlesTable({ articles, currentUser }) {
             accessor: 'email',
         },
         {
-            Header: 'DateAdded',
+            Header: 'Date Added',
             accessor: 'dateAdded',
         }
     ];
 
     const columnsIfAdmin = [
         ...columns,
-        // ButtonColumn("Edit", "primary", editCallback, "ArticlesTable"),
         ButtonColumn("Delete", "danger", deleteCallback, "ArticlesTable")
     ];
 
