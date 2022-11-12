@@ -1,4 +1,4 @@
-import { _fireEvent, render, waitFor } from "@testing-library/react";
+import { fireEvent, render, waitFor } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 import HelpRequestIndexPage from "main/pages/HelpRequest/HelpRequestIndexPage";
@@ -148,35 +148,35 @@ describe("HelpRequestIndexPage tests", () => {
         expect(queryByTestId(`${testId}-cell-row-0-col-id`)).not.toBeInTheDocument();
     });
 
-    // test("test what happens when you click delete, admin", async () => {
-    //     setupAdminUser();
+    test("test what happens when you click delete, admin", async () => {
+        setupAdminUser();
 
-    //     const queryClient = new QueryClient();
-    //     axiosMock.onGet("/api/helprequest/all").reply(200, helpRequestFixtures.threeHelpRequests);
-    //     axiosMock.onDelete("/api/helprequest", {params: {id: "1"}}).reply(200, "HelpRequest with id 1 was deleted");
-
-
-    //     const { getByTestId } = render(
-    //         <QueryClientProvider client={queryClient}>
-    //             <MemoryRouter>
-    //                 <DiningCommonsIndexPage />
-    //             </MemoryRouter>
-    //         </QueryClientProvider>
-    //     );
-
-    //     await waitFor(() => { expect(getByTestId(`${testId}-cell-row-0-col-code`)).toBeInTheDocument(); });
-
-    //    expect(getByTestId(`${testId}-cell-row-0-col-code`)).toHaveTextContent("de-la-guerra"); 
+        const queryClient = new QueryClient();
+        axiosMock.onGet("/api/helprequest/all").reply(200, helpRequestFixtures.threeHelpRequests);
+        axiosMock.onDelete("/api/helprequest", {params: {id: 1}}).reply(200, "HelpRequest with id 1 deleted");
 
 
-    //     const deleteButton = getByTestId(`${testId}-cell-row-0-col-Delete-button`);
-    //     expect(deleteButton).toBeInTheDocument();
+        const { getByTestId } = render(
+            <QueryClientProvider client={queryClient}>
+                <MemoryRouter>
+                    <HelpRequestIndexPage />
+                </MemoryRouter>
+            </QueryClientProvider>
+        );
+
+        await waitFor(() => { expect(getByTestId(`${testId}-cell-row-0-col-id`)).toBeInTheDocument(); });
+
+       expect(getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("1"); 
+
+
+        const deleteButton = getByTestId(`${testId}-cell-row-0-col-Delete-button`);
+        expect(deleteButton).toBeInTheDocument();
        
-    //     fireEvent.click(deleteButton);
+        fireEvent.click(deleteButton);
 
-    //     await waitFor(() => { expect(mockToast).toBeCalledWith("DiningCommons with id de-la-guerra was deleted") });
+        await waitFor(() => { expect(mockToast).toBeCalledWith("HelpRequest with id 1 deleted") });
 
-    // });
+    });
 
     // test("test what happens when you click edit as an admin", async () => {
     //     setupAdminUser();
