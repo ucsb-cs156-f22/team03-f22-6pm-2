@@ -1,4 +1,6 @@
-import { render } from "@testing-library/react";
+
+import { _fireEvent, render, _waitFor } from "@testing-library/react";
+
 import { recommendationFixtures } from "fixtures/recommendationFixtures";
 import RecommendationTable from "main/components/Recommendation/RecommendationTable"
 import { QueryClient, QueryClientProvider } from "react-query";
@@ -94,9 +96,9 @@ describe("RecommendationTable tests", () => {
     // expect(editButton).toBeInTheDocument();
     // expect(editButton).toHaveClass("btn-primary");
 
-    // const deleteButton = getByTestId(`${testId}-cell-row-0-col-Delete-button`);
-    // expect(deleteButton).toBeInTheDocument();
-    // expect(deleteButton).toHaveClass("btn-danger");
+    const deleteButton = getByTestId(`${testId}-cell-row-0-col-Delete-button`);
+    expect(deleteButton).toBeInTheDocument();
+    expect(deleteButton).toHaveClass("btn-danger");
 
   });
 
