@@ -1,4 +1,4 @@
-import {  render } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import { menuItemsFixtures } from "fixtures/menuItemsFixtures";
 import MenuItemsTable from "main/components/MenuItems/MenuItemsTable";
 import { QueryClient, QueryClientProvider } from "react-query";
@@ -92,9 +92,9 @@ describe("MenuItemsTable tests", () => {
     // expect(editButton).toBeInTheDocument();
     // expect(editButton).toHaveClass("btn-primary");
 
-    // const deleteButton = getByTestId(`${testId}-cell-row-0-col-Delete-button`);
-    // expect(deleteButton).toBeInTheDocument();
-    // expect(deleteButton).toHaveClass("btn-danger");
+    const deleteButton = getByTestId(`${testId}-cell-row-0-col-Delete-button`);
+    expect(deleteButton).toBeInTheDocument();
+    expect(deleteButton).toHaveClass("btn-danger");
 
   });
 

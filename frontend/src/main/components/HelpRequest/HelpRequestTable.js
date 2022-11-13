@@ -1,12 +1,13 @@
 import OurTable, { ButtonColumn } from "main/components/OurTable";
 import { useBackendMutation } from "main/utils/useBackend";
 import { onDeleteSuccess } from "main/utils/UCSBDateUtils"
-import { _useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { hasRole } from "main/utils/currentUser";
+
 
 export function cellToAxiosParamsDelete(cell) {
     return {
-        url: "/api/UCSBDiningCommonsMenuItem",
+        url: "/api/helprequest",
         method: "DELETE",
         params: {
             id: cell.row.values.id
@@ -14,7 +15,7 @@ export function cellToAxiosParamsDelete(cell) {
     }
 }
 
-export default function MenuItemsTable({ menuItems, currentUser }) {
+export default function HelpRequestTable({ helpRequest, currentUser }) {
 
     // const navigate = useNavigate();
 
@@ -26,7 +27,7 @@ export default function MenuItemsTable({ menuItems, currentUser }) {
     const deleteMutation = useBackendMutation(
         cellToAxiosParamsDelete,
         { onSuccess: onDeleteSuccess },
-        ["/api/UCSBDiningCommonsMenuItem/all"]
+        ["/api/ucsbdates/all"]
     );
     // Stryker enable all 
 
@@ -35,34 +36,47 @@ export default function MenuItemsTable({ menuItems, currentUser }) {
 
     const columns = [
         {
+            Header: 'Explanation',
+            accessor: 'explanation', // accessor is the "key" in the data
+        },
+        {
             Header: 'id',
             accessor: 'id',
         },
         {
-            Header: 'Dining Commons Code',
-            accessor: 'diningCommonsCode',
+            Header: 'Request Time',
+            accessor: 'requestTime',
         },
         {
-            Header: 'Name',
-            accessor: 'name',
+            Header: 'Requester Email',
+            accessor: 'requesterEmail',
         },
         {
-            Header: 'Station',
-            accessor: 'station',
+            Header: 'Solved',
+            id: 'solved',
+            accessor: (row, _rowIndex) => String(row.solved)
+        },
+        {
+            Header: 'Table Or Breakout Room',
+            accessor: 'tableOrBreakoutRoom',
+        },
+        {
+            Header: 'Team Id',
+            accessor: 'teamId',
         }
     ];
 
     const columnsIfAdmin = [
         ...columns,
         // ButtonColumn("Edit", "primary", editCallback, "UCSBDatesTable"),
-        ButtonColumn("Delete", "danger", deleteCallback, "MenuItemsTable")
+        ButtonColumn("Delete", "danger", deleteCallback, "HelpRequestTable")
     ];
 
     const columnsToDisplay = hasRole(currentUser, "ROLE_ADMIN") ? columnsIfAdmin : columns;
 
     return <OurTable
-        data={menuItems}
+        data={helpRequest}
         columns={columnsToDisplay}
-        testid={"MenuItemsTable"}
+        testid={"HelpRequestTable"}
     />;
 };

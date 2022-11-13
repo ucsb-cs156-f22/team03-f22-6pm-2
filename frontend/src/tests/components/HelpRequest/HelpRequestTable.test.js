@@ -1,8 +1,6 @@
-
 import { _fireEvent, render, _waitFor } from "@testing-library/react";
-
-import { recommendationFixtures } from "fixtures/recommendationFixtures";
-import RecommendationTable from "main/components/Recommendation/RecommendationTable"
+import { helpRequestFixtures } from "fixtures/helpRequestFixtures";
+import HelpRequestTable from "main/components/HelpRequest/HelpRequestTable";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 import { currentUserFixtures } from "fixtures/currentUserFixtures";
@@ -15,7 +13,7 @@ jest.mock('react-router-dom', () => ({
     useNavigate: () => mockedNavigate
 }));
 
-describe("RecommendationTable tests", () => {
+describe("HelpRequestTable tests", () => {
   const queryClient = new QueryClient();
 
 
@@ -25,7 +23,7 @@ describe("RecommendationTable tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <RecommendationTable recommendations={[]} currentUser={currentUser} />
+          <HelpRequestTable helpRequest={[]} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
 
@@ -37,7 +35,7 @@ describe("RecommendationTable tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <RecommendationTable recommendations={[]} currentUser={currentUser} />
+          <HelpRequestTable helpRequest={[]} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
 
@@ -50,7 +48,7 @@ describe("RecommendationTable tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <RecommendationTable recommendations={[]} currentUser={currentUser} />
+          <HelpRequestTable helpRequest={[]} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
 
@@ -64,15 +62,15 @@ describe("RecommendationTable tests", () => {
     const { getByText, getByTestId } = render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <RecommendationTable recommendations={recommendationFixtures.threeRecommendations} currentUser={currentUser} />
+          <HelpRequestTable helpRequest={helpRequestFixtures.threeHelpRequests} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
 
     );
 
-    const expectedHeaders = ["Id", "RequesterEmail", "ProfessorEmail", "Explanation", "DateRequested", "DateNeeded", "Done"];
-    const expectedFields = ["id", "requesterEmail", "professorEmail", "explanation", "dateRequested", "dateNeeded", "done"];
-    const testId = "RecommendationTable";
+    const expectedHeaders = ["Explanation", "id", "Request Time", "Requester Email","Solved","Table Or Breakout Room","Team Id"];
+    const expectedFields = ["explanation", "id", "requestTime", "requesterEmail","solved","tableOrBreakoutRoom","teamId"];
+    const testId = "HelpRequestTable";
 
     expectedHeaders.forEach((headerText) => {
       const header = getByText(headerText);
@@ -84,13 +82,8 @@ describe("RecommendationTable tests", () => {
       expect(header).toBeInTheDocument();
     });
 
-    expect(getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("2");
-    expect(getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent("3");
-    expect(getByTestId(`${testId}-cell-row-2-col-id`)).toHaveTextContent("4");
-    expect(getByTestId(`${testId}-cell-row-0-col-requesterEmail`)).toHaveTextContent("cgaucho@ucsb.edu");
-    expect(getByTestId(`${testId}-cell-row-1-col-requesterEmail`)).toHaveTextContent("ldelplaya@ucsb.edu");
-    expect(getByTestId(`${testId}-cell-row-0-col-done`)).toHaveTextContent(true);
-    expect(getByTestId(`${testId}-cell-row-1-col-done`)).toHaveTextContent(false);
+    expect(getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("1");
+    expect(getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent("2");
 
     // const editButton = getByTestId(`${testId}-cell-row-0-col-Edit-button`);
     // expect(editButton).toBeInTheDocument();
@@ -109,20 +102,20 @@ describe("RecommendationTable tests", () => {
   //   const { getByTestId } = render(
   //     <QueryClientProvider client={queryClient}>
   //       <MemoryRouter>
-  //         <RecommendationTable recommendations={ucsbDatesFixtures.threeDates} currentUser={currentUser} />
+  //         <HelpRequestTable dates={helpRequestFixtures.threeHelpRequests} currentUser={currentUser} />
   //       </MemoryRouter>
   //     </QueryClientProvider>
 
   //   );
 
-  //   await waitFor(() => { expect(getByTestId(`RecommendationTable-cell-row-0-col-id`)).toHaveTextContent("1"); });
+  //   await waitFor(() => { expect(getByTestId(`HelpRequestTable-cell-row-0-col-id`)).toHaveTextContent("1"); });
 
-  //   const editButton = getByTestId(`RecommendationTable-cell-row-0-col-Edit-button`);
+  //   const editButton = getByTestId(`HelpRequestTable-cell-row-0-col-Edit-button`);
   //   expect(editButton).toBeInTheDocument();
     
   //   fireEvent.click(editButton);
 
-  //   await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith('/recommendation/edit/1'));
+  //   await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith('/helprequest/edit/1'));
 
   // });
 
