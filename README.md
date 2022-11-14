@@ -1,7 +1,4 @@
-# STARTER-team03
-
-
-TODO: Add a link to the deployed Heroku app for your team here, e.g.
+# team03-f22-6pm-2
 
 Production Deployment: https://f22-6pm-2-team03.herokuapp.com/
 
@@ -9,8 +6,6 @@ QA Deployment: https://f22-6pm-2-team03-qa.herokuapp.com/
 
 * Storybook (production): <https://ucsb-cs156-f22.github.io/team03-f22-6pm-2-docs>
 * Storybook (development/qa): <https://ucsb-cs156-f22.github.io/team03-f22-6pm-2-docs-qa>
-
-TODO: Leave the results of the TODOS, but remove all of the TODO instructions from the readme.
 
 # Setup before running application
 
